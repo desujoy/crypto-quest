@@ -27,19 +27,19 @@ jobs:
 
       - name: Show Forge version
         run: |
-          forge --version
+          cd dapp && forge --version
 
       - name: Run Forge fmt
         run: |
-          forge fmt --check
+          cd dapp && forge fmt --check
         id: fmt
 
       - name: Run Forge build
         run: |
-          forge build --sizes
+          cd dapp && forge build --sizes
         id: build
 
       - name: Run Forge tests
         run: |
-          forge test -vvv
+          cd dapp && forge test -vvv
         id: test
