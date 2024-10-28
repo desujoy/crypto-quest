@@ -1,5 +1,6 @@
 "use client";
 
+import { signIn, signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 // import WagmiWrapper from "@/wagmi/wrapper";
 import {
@@ -16,6 +17,7 @@ function AuthModal() {
   const { disconnect } = useDisconnect();
   const { data: ensName } = useEnsName({ address });
   const { data: ensAvatar } = useEnsAvatar({ name: ensName! });
+  const { data: session } = useSession();
 
   return (
     <>
@@ -26,6 +28,25 @@ function AuthModal() {
             <div className="text-black">
               {ensName ? `${ensName} (${address})` : address}
             </div>
+          )}
+          {session ? (
+            <div className="flex flex-col gap-2 text-center">
+              <div className="text-black">{session?.user?.name}</div>
+              <div className="text-black">{session?.user?.email}</div>
+              <button
+                className="bg-blue-500 text-white px-4 py-2 rounded-md"
+                onClick={() => signOut()}
+              >
+                Logout
+              </button>
+            </div>
+          ) : (
+            <button
+              className="bg-blue-500 text-white px-4 py-2 rounded-md"
+              onClick={() => signIn("google")}
+            >
+              Connect Google
+            </button>
           )}
           <button
             className="bg-blue-500 text-white px-4 py-2 rounded-md"
