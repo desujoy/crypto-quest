@@ -30,9 +30,7 @@ contract NFTHandler is ERC721 {
         currentTokenId += 1;
     }
 
-    function tokenURI(
-        uint256 tokenId
-    ) public view override returns (string memory) {
+    function tokenURI(uint256 tokenId) public view override returns (string memory) {
         return string(abi.encodePacked(baseURI, Strings.toString(tokenId)));
     }
 }
