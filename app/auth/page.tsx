@@ -14,7 +14,7 @@ export default function AuthPage() {
   return (
     <div className="flex w-screen h-screen justify-center items-center">
       {session ? (
-        <div className="flex flex-col gap-4 m-4 pl-40 pr-4 justify-center items-start w-full">
+        <div className="flex flex-col gap-4 m-4 md:pl-[10vw] pr-4 justify-center items-start w-full">
           <h1 className="text-3xl font-bold">Successfully Authenticated</h1>
           <Link
             href={"/connect-wallet"}
@@ -24,7 +24,7 @@ export default function AuthPage() {
           </Link>
         </div>
       ) : (
-        <div className="flex flex-col gap-4 m-4 pl-40 pr-4 justify-center items-start w-full">
+        <div className="flex flex-col gap-4 m-4 md:pl-[10vw] pr-4 justify-center items-start w-full">
           <h1 className="text-3xl font-bold">Authentication</h1>
           {lost && (
             <p className="text-red-500">
@@ -39,9 +39,9 @@ export default function AuthPage() {
           </button>
         </div>
       )}
-      <div className="w-full bg-gray-50 h-full">
+      <div className="w-auto bg-gray-50 h-screen max-md:hidden">
         <Image
-          className="object-cover w-full h-full"
+          className="object-cover w-auto h-full"
           src={"/img/auth-cover.png"}
           alt="Authentication"
           width={500}

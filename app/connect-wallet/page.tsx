@@ -11,7 +11,7 @@ export default function ConnectWalletPage() {
   return (
     <div className="flex w-screen h-screen justify-center items-center">
       {isConnected ? (
-        <div className="flex flex-col gap-4 m-4 pl-40 pr-4 justify-center items-start w-full">
+        <div className="flex flex-col gap-4 m-4 md:pl-[10vw] pr-4 justify-center items-start w-full">
           <h1 className="text-3xl font-bold">Successfully Connected</h1>
           <div className="flex flex-row gap-4">
             <div className="flex flex-col gap-2">
@@ -29,7 +29,7 @@ export default function ConnectWalletPage() {
           </div>
         </div>
       ) : (
-        <div className="flex flex-col gap-4 m-4 pl-40 pr-4 justify-center items-start w-full">
+        <div className="flex flex-col gap-4 m-4 md:pl-[10vw] pr-4 justify-center items-start w-full">
           <h1 className="text-3xl font-bold">Connect Wallet</h1>
           <p className="text-lg text-gray-500">
             Connect your wallet to access the full functionality of the app.
@@ -54,9 +54,9 @@ export default function ConnectWalletPage() {
           </div>
         </div>
       )}
-      <div className="w-full bg-gray-50 h-full">
+      <div className="w-auto bg-gray-50 h-screen max-md:hidden">
         <Image
-          className="object-cover w-full h-full"
+          className="object-cover w-auto h-full"
           src={"/img/wallet-cover.png"}
           alt="Connect Wallet"
           width={500}
