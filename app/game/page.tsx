@@ -10,6 +10,7 @@ export default function GamePage() {
   const [playerName, setPlayerName] = useState("");
   const [playerRegNo, setPlayerRegNo] = useState("");
   useEffect(() => {
+    console.log(session);
     if (session && session.user && session.user.name && session.user.regno) {
       setPlayerName(session.user.name);
       setPlayerRegNo(session.user.regno);

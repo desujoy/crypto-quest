@@ -3,7 +3,6 @@ import Google from "next-auth/providers/google";
 import { DrizzleAdapter } from "@auth/drizzle-adapter";
 import { db } from "./db";
 import { accounts, users } from "./db/schema";
-import { authUserToNameRegno } from "./utils/string-man";
 
 declare module "next-auth" {
   interface User {
@@ -23,11 +22,11 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         console.log(profile);
         return {
           id: profile.id,
-          name: authUserToNameRegno(profile.name).userName,
+          name: profile.given_name,
           email: profile.email,
           emailVerified: profile.email_verified,
           image: profile.picture,
-          regno: authUserToNameRegno(profile.name).userRegNo,
+          regno: profile.family_name,
         };
       },
       allowDangerousEmailAccountLinking: true,
