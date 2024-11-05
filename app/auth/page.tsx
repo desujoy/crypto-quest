@@ -38,6 +38,20 @@ export default function AuthPage() {
               Please login with your VIT Bhopal email.
             </p>
           )}
+          {error === "Configuration" && (
+            <p className="text-red-500">
+              There was a problem when trying to authenticate. <br />
+              Please contact support if this error persists.
+            </p>
+          )}
+          {error === "Verification" && (
+            <p className="text-red-500">
+              The token has expired or has already been used.
+            </p>
+          )}
+          {error === "Default" && (
+            <p className="text-red-500">Something went wrong.</p>
+          )}
           <button
             className="bg-blue-500 text-white px-4 py-2 rounded-md"
             onClick={() => signIn("google")}
