@@ -30,6 +30,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           regno: authUserToNameRegno(profile.name).userRegNo,
         };
       },
+      allowDangerousEmailAccountLinking: true,
     }),
   ],
   callbacks: {
@@ -45,7 +46,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       return session;
     },
   },
-  pages:{
-    error: '/auth',
-  }
+  pages: {
+    error: "/auth",
+  },
 });
