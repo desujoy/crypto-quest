@@ -20,10 +20,12 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [
     Google({
       profile(profile) {
+        console.log(profile);
         return {
           id: profile.id,
           name: authUserToNameRegno(profile.name).userName,
           email: profile.email,
+          emailVerified: profile.email_verified,
           image: profile.picture,
           regno: authUserToNameRegno(profile.name).userRegNo,
         };
@@ -31,6 +33,9 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     }),
   ],
   callbacks: {
+    signIn({ profile }) {
+      return profile?.email?.endsWith("@vitbhopal.ac.in") || false;
+    },
     jwt({ token, user }) {
       if (user) token.regno = user.regno;
       return token;
@@ -40,4 +45,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       return session;
     },
   },
+  pages:{
+    error: '/auth',
+  }
 });

@@ -7,7 +7,7 @@ import { useSearchParams } from "next/navigation";
 
 export default function AuthPage() {
   const searchParams = useSearchParams();
-  const lost = searchParams.get("lost");
+  const error = searchParams.get("error");
 
   const { data: session } = useSession();
 
@@ -26,9 +26,16 @@ export default function AuthPage() {
       ) : (
         <div className="flex flex-col gap-4 m-4 md:pl-[10vw] pr-4 justify-center items-start w-full">
           <h1 className="text-3xl font-bold">Authentication</h1>
-          {lost && (
+          {error === "lost" && (
             <p className="text-red-500">
               You need to be authenticated to access this page.
+            </p>
+          )}
+          {error === "AccessDenied" && (
+            <p className="text-red-500">
+              Currently this game is only available for VIT Bhopal students.
+              <br />
+              Please login with your VIT Bhopal email.
             </p>
           )}
           <button

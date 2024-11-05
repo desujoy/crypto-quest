@@ -8,7 +8,7 @@ export const config = {
 
 export default auth((req) => {
   if (!req.auth && !allowedPages.includes(req.nextUrl.pathname)) {
-    const newUrl = new URL("/auth?lost=true", req.nextUrl.origin);
+    const newUrl = new URL("/auth?error=lost", req.nextUrl.origin);
     return Response.redirect(newUrl);
   }
 });
