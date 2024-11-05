@@ -1,6 +1,5 @@
 "use client";
 
-import { authUserToNameRegno } from "@/utils/string-man";
 import { signOut, useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { useAccount } from "wagmi";
@@ -11,10 +10,9 @@ export default function GamePage() {
   const [playerName, setPlayerName] = useState("");
   const [playerRegNo, setPlayerRegNo] = useState("");
   useEffect(() => {
-    if (session && session.user && session.user.name) {
-      const { userName, userRegNo } = authUserToNameRegno(session.user.name);
-      setPlayerRegNo(userName);
-      setPlayerName(userRegNo);
+    if (session && session.user && session.user.name && session.user.regno) {
+      setPlayerName(session.user.name);
+      setPlayerRegNo(session.user.regno);
     }
   }, [session]);
 
