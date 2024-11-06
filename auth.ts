@@ -6,6 +6,7 @@ import { accounts, users } from "./db/schema";
 
 declare module "next-auth" {
   interface User {
+    id?: string;
     regno?: string;
   }
 }
@@ -37,11 +38,15 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       return profile?.email?.endsWith("@vitbhopal.ac.in") || false;
     },
     jwt({ token, user }) {
-      if (user) token.regno = user.regno;
+      if (user) {
+        token.regno = user.regno;
+        token.id = user.id;
+      }
       return token;
     },
     session({ session, token }) {
       session.user.regno = token.regno as string;
+      session.user.id = token.id as string;
       return session;
     },
   },

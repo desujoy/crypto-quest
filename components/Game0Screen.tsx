@@ -1,6 +1,6 @@
 "use client";
 
-import { Question } from "@/utils/game0";
+import { Answer, Question } from "@/utils/game0";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -9,10 +9,12 @@ export default function Game0Screen({
   evaluateAnswer,
 }: {
   questions: Question[];
-  evaluateAnswer: (answer: string[]) => Promise<number>;
+  evaluateAnswer: (answers: Answer[]) => Promise<number>;
 }) {
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [answers, setAnswers] = useState<string[]>([]);
+  const [answers, setAnswers] = useState<Answer[]>(
+    Array.from(questions, (q) => ({ id: q.id, answer: "" }))
+  );
   const [score, setScore] = useState<number | null>(null);
 
   async function handleNext() {
@@ -24,12 +26,10 @@ export default function Game0Screen({
     }
   }
 
-  function handleAnswer(answer: string) {
-    setAnswers((prev) => {
-      const newAnswers = [...prev];
-      newAnswers[currentQuestion] = answer;
-      return newAnswers;
-    });
+  function handleAnswer(qid: string, answer: string) {
+    setAnswers((prev) =>
+      prev.map((ans) => (ans.id === qid ? { id: qid, answer } : ans))
+    );
   }
 
   return (
@@ -43,24 +43,26 @@ export default function Game0Screen({
             {questions[currentQuestion].question}
           </h1>
           <div className="flex flex-col gap-4">
-            {questions[currentQuestion].options
-              .map((option, index) => (
-                <button
-                  key={index}
-                  className={
-                    answers[currentQuestion] === option
-                      ? "bg-blue-500 text-white px-4 py-2 rounded-md"
-                      : "bg-white text-black px-4 py-2 rounded-md border-2 border-blue-500"
-                  }
-                  onClick={() => handleAnswer(option)}
-                >
-                  {option}
-                </button>
-              ))}
+            {questions[currentQuestion].options.map((option, index) => (
+              <button
+                key={index}
+                className={
+                  answers[currentQuestion]?.answer === option
+                    ? "bg-blue-500 text-white px-4 py-2 rounded-md"
+                    : "bg-white text-black px-4 py-2 rounded-md border-2 border-blue-500"
+                }
+                onClick={() =>
+                  handleAnswer(questions[currentQuestion].id, option)
+                }
+              >
+                {option}
+              </button>
+            ))}
           </div>
           <button
-            className="bg-blue-500 text-white px-4 py-2 my-4 rounded-md w-32 text-center"
+            className="bg-blue-500 disabled:bg-slate-500 text-white px-4 py-2 my-4 rounded-md w-32 text-center"
             onClick={handleNext}
+            disabled={answers[currentQuestion].answer === ""}
           >
             {currentQuestion < questions.length - 1 ? "Next" : "Submit"}
           </button>

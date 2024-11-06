@@ -42,3 +42,28 @@ export const accounts = pgTable(
     }),
   })
 );
+
+export const game0 = pgTable("game0", {
+  id: text("id")
+    .primaryKey()
+    .$defaultFn(() => crypto.randomUUID()),
+  userId: text("userId")
+    .notNull()
+    .references(() => users.id),
+  score: integer("score").notNull(),
+  time: timestamp("time", { mode: "date" })
+    .notNull()
+    .$default(() => new Date()),
+});
+
+export const game0questions = pgTable("game0questions", {
+  id: text("id")
+    .primaryKey()
+    .$defaultFn(() => crypto.randomUUID()),
+  question: text("question").notNull(),
+  option1: text("option1").notNull(),
+  option2: text("option2").notNull(),
+  option3: text("option3").notNull(),
+  option4: text("option4").notNull(),
+  answer: text("answer").notNull(),
+});
