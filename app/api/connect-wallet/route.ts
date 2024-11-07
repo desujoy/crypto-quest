@@ -6,7 +6,6 @@ import { eq } from "drizzle-orm";
 export async function POST(req: Request) {
   const { walletAddress } = await req.json();
   const session = await auth();
-  console.log(session);
   const userEmail = session?.user?.email;
   if (!userEmail) {
     return new Response("Unauthorized", { status: 401 });

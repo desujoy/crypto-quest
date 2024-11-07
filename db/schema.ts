@@ -17,6 +17,7 @@ export const users = pgTable("user", {
   image: text("image"),
   regno: text("regno"),
   walletAddress: text("walletAddress").$type<`0x${string}`>(),
+  gameCompleted: integer("gameCompleted"),
 });
 
 export const accounts = pgTable(
@@ -66,4 +67,16 @@ export const game0questions = pgTable("game0questions", {
   option3: text("option3").notNull(),
   option4: text("option4").notNull(),
   answer: text("answer").notNull(),
+});
+
+export const game1 = pgTable("game1", {
+  id: text("id")
+    .primaryKey()
+    .$defaultFn(() => crypto.randomUUID()),
+  userId: text("userId")
+    .notNull()
+    .references(() => users.id),
+  time: timestamp("time", { mode: "date" })
+    .notNull()
+    .$default(() => new Date()),
 });

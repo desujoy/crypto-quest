@@ -1,14 +1,13 @@
 import { auth } from "@/auth";
 import Game0Screen from "@/components/Game0Screen";
 import { db } from "@/db";
-import { game0 } from "@/db/schema";
+import { game0, users } from "@/db/schema";
 import { Answer, evaluateAnswers, getQuestions } from "@/utils/game0";
 import { eq } from "drizzle-orm";
 
 export default async function Game0() {
   const session = await auth();
-  const userId = session?.user?.id;
-  console.log(userId);
+  const userId = session?.user?.id;  
 
   const userStatus = await db
     .select()
@@ -35,6 +34,10 @@ export default async function Game0() {
         userId: userId,
         score: result,
       });
+      await db
+        .update(users)
+        .set({ gameCompleted: 0 })
+        .where(eq(users.id, userId));
     }
     return result;
   }

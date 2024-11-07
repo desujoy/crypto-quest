@@ -8,6 +8,7 @@ declare module "next-auth" {
   interface User {
     id?: string;
     regno?: string;
+    gameCompleted?: number;
   }
 }
 
@@ -20,7 +21,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [
     Google({
       profile(profile) {
-        console.log(profile);
         return {
           id: profile.id,
           name: profile.given_name,
@@ -39,14 +39,16 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     },
     jwt({ token, user }) {
       if (user) {
-        token.regno = user.regno;
         token.id = user.id;
+        token.regno = user.regno;
+        token.gameCompleted = user.gameCompleted;
       }
       return token;
     },
     session({ session, token }) {
-      session.user.regno = token.regno as string;
       session.user.id = token.id as string;
+      session.user.regno = token.regno as string;
+      session.user.gameCompleted = token.gameCompleted as number;
       return session;
     },
   },
