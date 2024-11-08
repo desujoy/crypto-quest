@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Crypto Quest 🕹️🚀  
 
-## Getting Started
+**Crypto Quest** is a Web3 gaming platform crafted exclusively for **VIT Bhopal students** to enhance their blockchain knowledge through interactive challenges.  
 
-First, run the development server:
+## 🔗 Hosted Link  
+[**Crypto Quest**](https://a-crypto-quest.vercel.app)  
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🎮 Games  
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Game 0: Blockchain Knowledge Quiz  
+- Test your blockchain fundamentals through an engaging multiple-choice quiz.  
+- Each session provides a new set of 10 randomly selected questions from a pool of 1000.  
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Game 1: Smart Contract Deployment & Interaction  
+- Deploy a smart contract provided by the game and submit the deployed contract address.  
+- Complete assigned tasks by interacting with your deployed contract.  
+- All actions are verified in real time using **Wagmi** and **Viem**.  
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### More Games Coming Soon!  
+Stay tuned for additional challenges to sharpen your Web3 skills.  
 
-## Learn More
+## 🚀 Tech Stack  
+- **Frontend**: Next.js, Tailwind CSS  
+- **Backend**: Node.js, Neon Database, Drizzle ORM  
+- **Blockchain**: Solidity, Foundry, Wagmi, Viem  
+- **Hosting**: Vercel  
 
-To learn more about Next.js, take a look at the following resources:
+## 🔐 Access  
+- **Restricted to VIT Bhopal students**.  
+- Login is required via college email for secure access.  
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 💡 How It Works  
+1. **Login**: Authenticate using your VIT Bhopal email.  
+2. **Play**: Choose a game and follow the instructions.  
+3. **Verify**: Game tasks are validated server-side to ensure fair play.  
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🛡️ Security & Privacy  
+- **Authentication**: Only VIT Bhopal students can log in.  
+- **Privacy**: User data is handled with strict confidentiality and is never shared.  
 
-## Deploy on Vercel
+## 🤝 Contribution  
+Contributions are currently limited to internal development. If you have suggestions or want to collaborate, feel free to reach out!  
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📧 Contact  
+For any queries or suggestions, contact:  
+**Sujoy De**  
+- GitHub: [desujoy](https://github.com/desujoy)  
+- Email: [sujoydeofficial@gmail.com](mailto:sujoydeofficial@gmail.com)
