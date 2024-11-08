@@ -17,7 +17,7 @@ export default async function Game1() {
       .where(eq(users.id, userId));
     if (
       !userGameCompleted[0].gameCompleted ||
-      userGameCompleted[0].gameCompleted <= 0
+      userGameCompleted[0].gameCompleted < 0
     ) {
       return (
         <div className="flex flex-col items-center justify-center">
