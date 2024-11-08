@@ -44,6 +44,14 @@ export const accounts = pgTable(
   })
 );
 
+export const sessions = pgTable("session", {
+  sessionToken: text("sessionToken").primaryKey(),
+  id: text("userId")
+    .notNull()
+    .references(() => users.id, { onDelete: "cascade" }),
+  expires: timestamp("expires", { mode: "date" }).notNull(),
+});
+
 export const game0 = pgTable("game0", {
   id: text("id")
     .primaryKey()

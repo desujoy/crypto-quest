@@ -17,7 +17,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     usersTable: users,
     accountsTable: accounts,
   }),
-  session: { strategy: "jwt" },
   providers: [
     Google({
       profile(profile) {
@@ -37,18 +36,8 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     signIn({ profile }) {
       return profile?.email?.endsWith("@vitbhopal.ac.in") || false;
     },
-    jwt({ token, user }) {
-      if (user) {
-        token.id = user.id;
-        token.regno = user.regno;
-        token.gameCompleted = user.gameCompleted;
-      }
-      return token;
-    },
-    session({ session, token }) {
-      session.user.id = token.id as string;
-      session.user.regno = token.regno as string;
-      session.user.gameCompleted = token.gameCompleted as number;
+    session: async ({ session, user }) => {
+      session.user = user;
       return session;
     },
   },
