@@ -7,7 +7,7 @@ import { eq } from "drizzle-orm";
 
 export default async function Game0() {
   const session = await auth();
-  const userId = session?.user?.id;  
+  const userId = session?.user?.id;
 
   const userStatus = await db
     .select()
@@ -29,7 +29,7 @@ export default async function Game0() {
   async function evaluate(answer: Answer[]) {
     "use server";
     const result = await evaluateAnswers(answer);
-    if (userId) {
+    if (userId && userStatus.length === 0) {
       await db.insert(game0).values({
         userId: userId,
         score: result,

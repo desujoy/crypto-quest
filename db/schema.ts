@@ -50,6 +50,7 @@ export const game0 = pgTable("game0", {
     .$defaultFn(() => crypto.randomUUID()),
   userId: text("userId")
     .notNull()
+    .unique()
     .references(() => users.id),
   score: integer("score").notNull(),
   time: timestamp("time", { mode: "date" })
