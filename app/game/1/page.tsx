@@ -15,10 +15,8 @@ export default async function Game1() {
       .select({ gameCompleted: users.gameCompleted })
       .from(users)
       .where(eq(users.id, userId));
-    if (
-      !userGameCompleted[0].gameCompleted ||
-      userGameCompleted[0].gameCompleted < 0
-    ) {
+    console.log(userGameCompleted);
+    if (userGameCompleted[0].gameCompleted === null) {
       return (
         <div className="flex flex-col items-center justify-center">
           <h1 className="text-2xl my-2 font-bold text-pretty">
