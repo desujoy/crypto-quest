@@ -1,5 +1,10 @@
 import { metaMask } from "wagmi/connectors";
-import { createConfig, cookieStorage, createStorage, webSocket } from "wagmi";
+import {
+  createConfig,
+  cookieStorage,
+  createStorage,
+  http,
+} from "wagmi";
 import { sepolia } from "wagmi/chains";
 
 export function getConfig() {
@@ -11,7 +16,7 @@ export function getConfig() {
       storage: cookieStorage,
     }),
     transports: {
-      [sepolia.id]: webSocket("wss://ethereum-sepolia-rpc.publicnode.com"),
+      [sepolia.id]: http("https://rpc.sepolia.org"),
     },
   });
 }
