@@ -20,22 +20,30 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [
     Google({
       profile(profile) {
-        return {
-          id: profile.id,
-          name: profile.given_name,
-          email: profile.email,
-          emailVerified: profile.email_verified,
-          image: profile.picture,
-          regno: profile.family_name,
-        };
+        if (profile.email.endsWith("@vitbhopal.ac.in")) {
+          return {
+            id: profile.id,
+            name: profile.given_name,
+            email: profile.email,
+            emailVerified: profile.email_verified,
+            image: profile.picture,
+            regno: profile.family_name,
+          };
+        } else {
+          return {
+            id: profile.id,
+            name: profile.name,
+            email: profile.email,
+            emailVerified: profile.email_verified,
+            image: profile.picture,
+            regno: "N/A",
+          };
+        }
       },
       allowDangerousEmailAccountLinking: true,
     }),
   ],
   callbacks: {
-    signIn({ profile }) {
-      return profile?.email?.endsWith("@vitbhopal.ac.in") || false;
-    },
     session: async ({ session, user }) => {
       session.user = user;
       return session;
