@@ -1,6 +1,6 @@
 # Crypto Quest 🕹️🚀  
 
-**Crypto Quest** is a Web3 gaming platform crafted exclusively for **VIT Bhopal students** to enhance their blockchain knowledge through interactive challenges.  
+**Crypto Quest** is a Web3 gaming platform designed to enhance blockchain knowledge through interactive challenges. Now open to everyone, it offers an engaging way to learn and practice blockchain concepts!  
 
 ## 🔗 Hosted Link  
 [**Crypto Quest**](https://a-crypto-quest.vercel.app)  
@@ -25,24 +25,20 @@ Stay tuned for additional challenges to sharpen your Web3 skills.
 - **Blockchain**: Solidity, Foundry, Wagmi, Viem  
 - **Hosting**: Vercel  
 
-## 🔐 Access  
-- **Restricted to VIT Bhopal students**.  
-- Login is required via college email for secure access.  
-
 ## 💡 How It Works  
-1. **Login**: Authenticate using your VIT Bhopal email.  
+1. **Sign Up**: Register with your email.  
 2. **Play**: Choose a game and follow the instructions.  
 3. **Verify**: Game tasks are validated server-side to ensure fair play.  
 
 ## 🛡️ Security & Privacy  
-- **Authentication**: Only VIT Bhopal students can log in.  
+- **Authentication**: Secure login for all users.  
 - **Privacy**: User data is handled with strict confidentiality and is never shared.  
 
 ## 🤝 Contribution  
-Contributions are currently limited to internal development. If you have suggestions or want to collaborate, feel free to reach out!  
+Contributions are welcome! If you have suggestions or want to collaborate, check out our GitHub repository or get in touch.  
 
 ## 📧 Contact  
 For any queries or suggestions, contact:  
 **Sujoy De**  
 - GitHub: [desujoy](https://github.com/desujoy)  
-- Email: [sujoydeofficial@gmail.com](mailto:sujoydeofficial@gmail.com)
+- Email: [sujoydeofficial@gmail.com](mailto:sujoydeofficial@gmail.com)  
